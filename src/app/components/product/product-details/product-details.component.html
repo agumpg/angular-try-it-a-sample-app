@@ -1,1 +1,21 @@
-<p>product-details works!</p>
+<div class="animate__animated animate__fadeIn mt-4">
+    <div class="col-12">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    {{product.name}}
+                </mat-card-title>
+                <mat-card-subtitle> {{product.price}}€</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{product.description}}
+                <span class="text-muted"
+                      *ngIf="!product.description">Sin descripción</span>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <a mat-button
+                   [routerLink]="[ '/products']">VOLVER</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

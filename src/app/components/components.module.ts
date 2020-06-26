@@ -8,6 +8,7 @@ import { ProductAlertsComponent } from './product/product-alerts/product-alerts.
 
 
 import { MaterialModule } from '../material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule( {
     declarations: [
@@ -19,7 +20,8 @@ import { MaterialModule } from '../material.module';
     ],
     imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        RouterModule
     ],
     exports: [
         ProductAlertsComponent,
