@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-12 col-md-4"
+         *ngFor="let product of products">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title> {{product.name}} </mat-card-title>
+                <mat-card-subtitle> {{product.price}}€</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{product.description}}
+                <span class="text-muted"
+                      *ngIf="!product.description">Sin descripción</span>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button
+                        color="primary"
+                        (click)="showMessage()">COMPARTIR</button>
+
+                <app-product-alerts [product]="product"
+                                    (notify)="notifyUser($event)"></app-product-alerts>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
