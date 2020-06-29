@@ -9,6 +9,9 @@ import { ProductAlertsComponent } from './product/product-alerts/product-alerts.
 
 import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
+import { CartComponent } from './cart/cart.component';
+import { ShippingComponent } from './shipping/shipping.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule( {
     declarations: [
@@ -16,12 +19,15 @@ import { RouterModule } from '@angular/router';
         ProductDetailsComponent,
         ProductDialogComponent,
         ProductListComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        CartComponent,
+        ShippingComponent
     ],
     imports: [
         CommonModule,
         MaterialModule,
-        RouterModule
+        RouterModule,
+        ReactiveFormsModule
     ],
     exports: [
         ProductAlertsComponent,

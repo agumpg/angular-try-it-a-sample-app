@@ -6,7 +6,7 @@
                 <mat-card-title [matTooltip]="'Ver detalle de: '+product.name">
                     <a [routerLink]="['/products', productId]">{{product.name}}</a>
                 </mat-card-title>
-                <mat-card-subtitle> {{product.price}}€</mat-card-subtitle>
+                <mat-card-subtitle> {{product.price | currency }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 {{product.description}}

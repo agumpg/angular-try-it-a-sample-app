@@ -1,0 +1,100 @@
+<mat-card class="card mt-4">
+    <mat-card-header>
+        <mat-card-title>Productos listos para comprar</mat-card-title>
+        <mat-card-subtitle *ngIf="items.length===0">Carrito Vacío</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let product of items">
+                {{ product.name }} - {{product.price | currency }}
+
+                <mat-divider></mat-divider>
+
+            </mat-list-item>
+        </mat-list>
+
+
+
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <a mat-button
+           [routerLink]="[ '/products']">VOLVER A TIENDA</a>
+        <a mat-button
+           class=""
+           [routerLink]="[ '/shipping']">COSTES DE ENVIO</a>
+    </mat-card-actions>
+
+
+</mat-card>
+
+<!-- FORMULARIO PARA PROCESAR EL PAGO -->
+<div *ngIf="!isCardAvailable()">
+    <form [formGroup]="checkoutForm"
+          (ngSubmit)="onSubmit(checkoutForm.value)">
+
+        <mat-card class="mt-4">
+            <mat-card-header>
+                <mat-card-title>Formulario de Pago</mat-card-title>
+                <mat-card-subtitle>loremp ipsum</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field hintLabel="Max 10 characters"
+                                        appearance="fill">
+                            <mat-label for="name">Nombre</mat-label>
+                            <input matInput
+                                   id="name"
+                                   formControlName="name"
+                                   placeholder="Nombre de Usuario">
+                            <mat-icon matSuffix
+                                      class="text_muted">account_circle</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field hintLabel="correo electrónico"
+                                        appearance="fill">
+                            <mat-label for="email">Email</mat-label>
+                            <input matInput
+                                   id="email"
+                                   formControlName="email"
+                                   placeholder="Email de contacto">
+                            <mat-icon matSuffix
+                                      class="text_muted">alternate_email</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field appearance="fill">
+                            <mat-label for="address">Dirección</mat-label>
+                            <input matInput
+                                   id="address"
+                                   formControlName="address"
+                                   placeholder="Dirección de entrega">
+                            <mat-icon matSuffix
+                                      class="text-muted">home</mat-icon>
+                            <mat-hint></mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-checkbox id="acceptTerms"
+                                      formControlName="acceptTerms">Acepto los términos y condiciones</mat-checkbox>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+
+                <button mat-raised-button
+                        [disabled]="!checkoutForm.valid"
+                        color="primary">
+                    COMPRAR
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

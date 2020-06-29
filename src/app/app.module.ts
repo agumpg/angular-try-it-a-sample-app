@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+// Configuración del Locale a Español
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData( localeEs );
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
-import { ProductAlertsComponent } from './components/product/product-alerts/product-alerts.component';
-import { ProductDialogComponent } from './components/product/product-dialog/product-dialog.component';
-import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { ComponentsModule } from './components/components.module';
+
+import { AppComponent } from './app.component';
 
 @NgModule( {
   declarations: [
@@ -20,10 +22,14 @@ import { ComponentsModule } from './components/components.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule,
     ComponentsModule
   ],
-  providers: [],
+  providers: [
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+    { provide: LOCALE_ID, useValue: 'es' }
+  ],
   bootstrap: [ AppComponent ]
 } )
 export class AppModule { }

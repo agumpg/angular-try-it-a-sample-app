@@ -1,8 +1,9 @@
 <mat-toolbar color="primary">
-    <span>Mi Tienda</span>
+    <span>Mi Tienda </span>
     <span class="fill-spacer"></span>
-    <button mat-raised-button
-            color="">
-        <mat-icon>shopping_cart</mat-icon> CARRITO
-    </button>
+    <a mat-raised-button
+       [routerLink]="['/cart']">
+        <mat-icon [matBadge]="totalItems"
+                  matBadgeColor="accent">shopping_cart</mat-icon> CARRITO
+    </a>
 </mat-toolbar>
